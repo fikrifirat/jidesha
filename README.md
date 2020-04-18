@@ -1,13 +1,13 @@
 Jidesha
 =======
 
-A Chrome extension for calendar integration (Google Calendar and Office 365) and Screen Sharing in Jitsi Meet.
+A Chrome extension for calendar integration (Google Calendar and Office 365) and Screen Sharing in potkal Meet.
 
 Note: this extension relies on the Chrome [chooseDesktopMedia](https://developer.chrome.com/extensions/desktopCapture) API which requires HTTPS.
 
-## How to create your own extension for your Jitsi Meet installation
+## How to create your own extension for your potkal Meet installation
 
-Each Jitsi Meet installation needs a customised extension.
+Each potkal Meet installation needs a customised extension.
 There is only one small JSON file to adapt. You have
 to create the extension and distribute it, either through
 Google Chrome's Web Store or by telling your users how to
@@ -40,11 +40,11 @@ CRX file into the "chrome://extensions" window.
 When Chrome shows it among your installed extensions,
 you will also see its *hash ID*.
 
-### Enter your extension's hash ID into your Jitsi Meet installation 
+### Enter your extension's hash ID into your potkal Meet installation 
 
 You have to write the hash ID into the `desktopSharingChromeExtId`
-property of your `/etc/jitsi/meet/<your.server.com>-config.js`.
-This way, Jitsi Meet knows what to look for when the user clicks
+property of your `/etc/potkal/meet/<your.server.com>-config.js`.
+This way, potkal Meet knows what to look for when the user clicks
 the "Share screen" button.
 
 Browser caches might need to be refreshed afterwards.
@@ -53,6 +53,6 @@ Browser caches might need to be refreshed afterwards.
 
 You can send the CRX file to your users and tell them how to
 install it. For example, you might want to put it
-directly onto your Jitsi Meet server (webroot in `/usr/share/jitsi-meet`).
+directly onto your potkal Meet server (webroot in `/usr/share/potkal-meet`).
 This would only be helpful for downloading the extension, as
 Chrome will not allow a direct installation from your site.

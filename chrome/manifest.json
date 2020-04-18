@@ -1,13 +1,13 @@
 {
   "manifest_version": 2,
-  "name": "Jitsi Desktop Streamer",
-  "description": "A simple extension that allows you to stream your desktop into meetings with Jitsi Meet and Jitsi Videobridge.",
+  "name": "Potkal Desktop Streamer",
+  "description": "A simple extension that allows you to schedule Potkal Live and stream your desktop screen",
   "version": "0.1.6",
   "minimum_chrome_version": "34",
   "icons": {
-    "16": "jitsi-logo-16x16.png",
-    "48": "jitsi-logo-48x48.png",
-    "128": "jitsi-logo-128x128.png"
+    "16": "potkal-logo-16x16.png",
+    "48": "potkal-logo-48x48.png",
+    "128": "potkal-logo-128x128.png"
   },
   "background": {
         "scripts": [ "background.js" ],
@@ -18,7 +18,7 @@
   ],
   "externally_connectable": {
       "matches": [
-          "*://meet.jit.si/*"
+          "*://enter.potkal.live/*"
       ]
   }
 }

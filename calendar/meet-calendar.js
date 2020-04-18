@@ -1,6 +1,6 @@
-const BASE_DOMAIN = "meet.jit.si";
+const BASE_DOMAIN = "enter.potkal.live";
 const BASE_URL = "https://" + BASE_DOMAIN + "/";
-const APP_NAME = "Jitsi";
+const APP_NAME = "Potkal";
 const NUMBER_RETRIEVE_SCRIPT = false;
 const CONFERENCE_MAPPER_SCRIPT = false;
 
@@ -45,7 +45,7 @@ class EventContainer {
     get description() {}
 
     /**
-     * The button container where we will add the jitsi button.
+     * The button container where we will add the potkal button.
      * @abstract
      */
     get buttonContainer() {}
@@ -79,7 +79,7 @@ class EventContainer {
      * Checks for the button on current page
      */
     isButtonPresent() {
-        return ($('#jitsi_button').length >= 1);
+        return ($('#potkal_button').length >= 1);
     }
 
     /**
@@ -180,9 +180,9 @@ class EventContainer {
     }
 
     /**
-     * Adds the jitsi button in buttonContainer.
+     * Adds the potkal button in buttonContainer.
      */
-    addJitsiButton() {
+    addPotkalButton() {
         var container = this.buttonContainer;
         if (!container)
             return;
@@ -191,7 +191,7 @@ class EventContainer {
 
         container.addClass('button_container');
         container.append(
-            '<div id="jitsi_button" ' +
+            '<div id="potkal_button" ' +
                 'class="goog-inline-block jfk-button jfk-button-action ' +
                     'jfk-button-clear-outline">' +
                 '<a href="#" style="color: white"></a>' +
@@ -372,7 +372,7 @@ class Description {
      * no meeting scheduled.
      */
     updateInitialButtonURL(location) {
-        var button = $('#jitsi_button a');
+        var button = $('#potkal_button a');
         button.html('Add a ' + LOCATION_TEXT);
         button.attr('href', '#');
         button.on('click', e => {
@@ -386,7 +386,7 @@ class Description {
      */
     updateButtonURL() {
         try {
-            var button = $('#jitsi_button a');
+            var button = $('#potkal_button a');
             button.html("Join your " + LOCATION_TEXT + " now");
             button.off('click');
             button.attr('href', BASE_URL + this.event.meetingId);
@@ -416,7 +416,7 @@ class GEvent extends EventContainer {
             this.updateMeetingId();
 
             if(!this.isButtonPresent())
-                this.addJitsiButton();
+                this.addPotkalButton();
         }
     }
 
@@ -431,7 +431,7 @@ class GEvent extends EventContainer {
     }
 
     /**
-     * The button container holding jitsi button.
+     * The button container holding potkal button.
      * @returns {*}
      */
     get buttonContainer() {
@@ -441,7 +441,7 @@ class GEvent extends EventContainer {
         if(neighbor.length == 0)
             return null;
 
-        let newRowID = getNodePrefix() + '.' + 'jitsi-rtc-row';
+        let newRowID = getNodePrefix() + '.' + 'potkal-rtc-row';
         let newRow = $('<tr id="' + newRowID + '">' +
                         '<th class="ep-dp-dt-th"></th>' +
                         '<td class="ep-dp-dt-td"></td>' +
@@ -618,7 +618,7 @@ class G2Event extends EventContainer {
             )
             && !this.isButtonPresent()) {
             this.updateMeetingId();
-            this.addJitsiButton();
+            this.addPotkalButton();
         }
     }
 
@@ -634,7 +634,7 @@ class G2Event extends EventContainer {
     }
 
     /**
-     * The button container holding jitsi button.
+     * The button container holding potkal button.
      * @returns {*}
      */
     get buttonContainer() {
@@ -646,7 +646,7 @@ class G2Event extends EventContainer {
             return null;
         }
 
-        let buttonContainer = $('#jitsi_button_container');
+        let buttonContainer = $('#potkal_button_container');
         if (buttonContainer.length !== 0) {
             return buttonContainer.find('content');
         }
@@ -654,15 +654,15 @@ class G2Event extends EventContainer {
         let newRow = $(
             '<div class = "FrSOzf">\
                 <div class = "tzcF6">\
-                    <div class = "DPvwYc jitsi_edit_page_icon"/>\
+                    <div class = "DPvwYc potkal_edit_page_icon"/>\
                 </div>\
                 <div class = "j3nyw">\
                     <div class = "BY5aAd">\
                         <div role = "button" \
                             class = "uArJ5e UQuaGc Y5sE8d" \
-                            id="jitsi_button_container">\
+                            id="potkal_button_container">\
                             <content class = "CwaK9">\
-                                <span id="jitsi_button" \
+                                <span id="potkal_button" \
                                       class="RveJvd snByac">\
                                 </span>\
                             </content>\
@@ -676,9 +676,9 @@ class G2Event extends EventContainer {
     }
 
     /**
-     * Adds the jitsi button in buttonContainer.
+     * Adds the potkal button in buttonContainer.
      */
-    addJitsiButton() {
+    addPotkalButton() {
         var container = this.buttonContainer;
         if (!container)
             return false;
@@ -832,7 +832,7 @@ class G2Description extends Description {
      * no meeting scheduled.
      */
     updateInitialButtonURL(location) {
-        let button = $('#jitsi_button');
+        let button = $('#potkal_button');
         button.html('Add a ' + LOCATION_TEXT);
 
         let container = this.event.buttonContainer;
@@ -850,7 +850,7 @@ class G2Description extends Description {
      */
     updateButtonURL() {
         try {
-            var button = $('#jitsi_button');
+            var button = $('#potkal_button');
             button.html("Join your " + LOCATION_TEXT + " now");
 
             var container = this.event.buttonContainer;
@@ -889,7 +889,7 @@ class MSLiveEvent extends EventContainer {
         if ($("div[aria-label='Event compose form']").is(":visible")) {
             if(!this.isButtonPresent()) {
                 this.updateMeetingId();
-                this.addJitsiButton();
+                this.addPotkalButton();
             }
         }
     }
@@ -903,7 +903,7 @@ class MSLiveEvent extends EventContainer {
     }
 
     /**
-     * The button container holding jitsi button.
+     * The button container holding potkal button.
      * @returns {*}
      */
     get buttonContainer() {
@@ -925,9 +925,9 @@ class MSLiveEvent extends EventContainer {
     }
 
     /**
-     * Adds the jitsi button in buttonContainer.
+     * Adds the potkal button in buttonContainer.
      */
-    addJitsiButton() {
+    addPotkalButton() {
         var container = this.buttonContainer;
         if (!container)
             return;
@@ -940,9 +940,9 @@ class MSLiveEvent extends EventContainer {
                     <button type="button" \
                             class="_cx_t2 _cx_r2 o365button" \
                             aria-labelledby="_ariaId_81"> \
-                        <span class = "_fc_3 csimg owaimg jitsi_ms_button"></span> \
+                        <span class = "_fc_3 csimg owaimg potkal_ms_button"></span> \
                         <span class = "_fc_4 _fc_2 ms-font-s ms-font-weight-semibold ms-font-color-themePrimary" \
-                              id = "jitsi_button"></span> \
+                              id = "potkal_button"></span> \
                     </button> \
                 </button> \
             </li>'
@@ -1008,7 +1008,7 @@ class MSLiveDescription extends Description {
      * no meeting scheduled.
      */
     updateInitialButtonURL(location) {
-        let button = $('#jitsi_button');
+        let button = $('#potkal_button');
         button.html('Add a ' + LOCATION_TEXT);
 
         button.parent().off('click');
@@ -1024,7 +1024,7 @@ class MSLiveDescription extends Description {
      */
     updateButtonURL() {
         try {
-            var button = $('#jitsi_button');
+            var button = $('#potkal_button');
             button.html("Join your " + LOCATION_TEXT + " now");
 
             button.parent().off('click');
@@ -1144,7 +1144,7 @@ function checkAndUpdateCalendar() {
                         = $(".bubblecontent .event-create-container");
                     // skip if our button is already added
                     if(quickAddDialogContainer.length < 1
-                        || $('#jitsi_button_quick_add').length != 0) {
+                        || $('#potkal_button_quick_add').length != 0) {
                         return;
                     }
 
@@ -1159,13 +1159,13 @@ function checkAndUpdateCalendar() {
                     var lastButtonGroup
                         = buttonsRow.find('.split-tile-right:last');
 
-                    var jitsiQuickAddButton = $(
+                    var potkalQuickAddButton = $(
                         '<div class="split-tile-right" style="float:left">' +
                             '<div class="tile-content" ' +
                                  'style="height: 30px; line-height: 30px;position: relative;">' +
                                 '<div class="right-actions" ' +
                                      'style="display: inline-block;float: right;margin-right: -16px;">' +
-                                    '<div id="jitsi_button_quick_add" ' +
+                                    '<div id="potkal_button_quick_add" ' +
                                          'class="goog-inline-block jfk-button jfk-button-action jfk-button-clear-outline" ' +
                                          'style="left: ' + (numberOfButtons > 1 ? '10' : '0') + 'px;">' +
                                         'Add a ' + LOCATION_TEXT +
@@ -1173,8 +1173,8 @@ function checkAndUpdateCalendar() {
                                 '</div>' +
                             '</div>' +
                         '</div>');
-                    lastButtonGroup.before(jitsiQuickAddButton);
-                    jitsiQuickAddButton.on('click', function(e) {
+                    lastButtonGroup.before(potkalQuickAddButton);
+                    potkalQuickAddButton.on('click', function(e) {
                         c.scheduleAutoCreateMeeting = true;
                         $('div.edit-button').click();
                     });
@@ -1224,24 +1224,24 @@ function checkAndUpdateCalendarG2() {
                         && (newElement.search('role=\"dialog\"') !== -1)) {
 
                         // skip if our button is already added
-                        if ($('#jitsi_button_quick_add').length != 0) {
+                        if ($('#potkal_button_quick_add').length != 0) {
                             return;
                         }
 
                         var tabEvent = $(mel).find("#tabEvent");
                         if (tabEvent.length > 0) {
-                            var jitsiQuickAddButton = $(
-                                '<content class="" role="tabpanel" id="jitsi_button_quick_add_content"> \
+                            var potkalQuickAddButton = $(
+                                '<content class="" role="tabpanel" id="potkal_button_quick_add_content"> \
                                     <div class="fy8IH poWrGb">\
                                         <div class="FkXdCf HyA7Fb">\
-                                            <div class="DPvwYc QusFJf jitsi_quick_add_icon"/>\
+                                            <div class="DPvwYc QusFJf potkal_quick_add_icon"/>\
                                         </div>\
                                         <div class="mH89We">\
                                             <div role="button" \
                                                  class="uArJ5e UQuaGc Y5sE8d" \
-                                                 id="jitsi_button_quick_add">\
+                                                 id="potkal_button_quick_add">\
                                                 <content class="CwaK9">\
-                                                    <span class="RveJvd jitsi_quick_add_text_size">\
+                                                    <span class="RveJvd potkal_quick_add_text_size">\
                                                         Add a ' + LOCATION_TEXT + '\
                                                     </span>\
                                                 </content>\
@@ -1250,11 +1250,11 @@ function checkAndUpdateCalendarG2() {
                                     </div>\
                                 </content>');
 
-                            $(tabEvent.parent()).append(jitsiQuickAddButton);
+                            $(tabEvent.parent()).append(potkalQuickAddButton);
 
                             var clickHandler
-                                = jitsiQuickAddButton.find(
-                                    '#jitsi_button_quick_add');
+                                = potkalQuickAddButton.find(
+                                    '#potkal_button_quick_add');
                             clickHandler.on('click', function (e) {
                                 c.scheduleAutoCreateMeeting = true;
                                 $('div[role="button"][jsname="rhPddf"]').click();
